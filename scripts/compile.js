@@ -22,6 +22,10 @@ const charMap = {
   backwardslash: "\\",
   colon: ":",
   creeper: "😳",
+
+  capital_h: "\uE000",
+  capital_o: "\uE001",
+
   end: "┣",
   forwardslash: "/",
   greaterthan: ">",
