@@ -1,16 +1,56 @@
 {
 	"format_version": "26.3",
-	"credit": "Modelbench-style capital H reconstruction based on user's rough model",
+	"credit": "By Ewan Howell",
 	"no_java_limits_scale": 2,
 	"texture_size": [
 		1000,
 		320
 	],
 	"textures": {
-		"2": "rainbow",
 		"particle": "rainbow"
 	},
 	"elements": [
+		{
+			"from": [
+				8,
+				23.5,
+				14.5
+			],
+			"to": [
+				0,
+				21,
+				1.5
+			],
+			"rotation": {
+				"angle": 0,
+				"axis": "y",
+				"origin": [
+					-4,
+					1.5,
+					4
+				]
+			},
+			"faces": {
+				"north": {
+					"uv": [
+						0,
+						13.3,
+						0.016,
+						13.35
+					],
+					"texture": "#missing"
+				},
+				"east": {
+					"uv": [
+						0,
+						13.3,
+						0.016,
+						13.35
+					],
+					"texture": "#missing"
+				}
+			}
+		},
 		{
 			"from": [
 				1,
@@ -30,7 +70,7 @@
 						4.288,
 						11.7
 					],
-					"texture": "#2"
+					"texture": "#missing"
 				},
 				"south": {
 					"uv": [
@@ -39,7 +79,7 @@
 						3.84,
 						11.7
 					],
-					"texture": "#2"
+					"texture": "#missing"
 				},
 				"up": {
 					"uv": [
@@ -48,7 +88,7 @@
 						3.84,
 						8.6
 					],
-					"texture": "#2"
+					"texture": "#missing"
 				},
 				"down": {
 					"uv": [
@@ -57,7 +97,7 @@
 						3.84,
 						11.7
 					],
-					"texture": "#2"
+					"texture": "#missing"
 				}
 			}
 		},
@@ -89,7 +129,7 @@
 						4.448,
 						10.1
 					],
-					"texture": "#2"
+					"texture": "#missing"
 				},
 				"east": {
 					"uv": [
@@ -98,7 +138,7 @@
 						4.448,
 						12.8
 					],
-					"texture": "#2"
+					"texture": "#missing"
 				},
 				"south": {
 					"uv": [
@@ -107,7 +147,7 @@
 						4.32,
 						10.1
 					],
-					"texture": "#2"
+					"texture": "#missing"
 				},
 				"up": {
 					"uv": [
@@ -116,7 +156,7 @@
 						4.32,
 						9.7
 					],
-					"texture": "#2"
+					"texture": "#missing"
 				},
 				"down": {
 					"uv": [
@@ -125,7 +165,7 @@
 						4.32,
 						11.7
 					],
-					"texture": "#2"
+					"texture": "#missing"
 				}
 			}
 		},
@@ -157,7 +197,7 @@
 						0.016,
 						13.35
 					],
-					"texture": "#2"
+					"texture": "#missing"
 				},
 				"east": {
 					"uv": [
@@ -166,7 +206,7 @@
 						0,
 						13.3
 					],
-					"texture": "#2"
+					"texture": "#missing"
 				},
 				"south": {
 					"uv": [
@@ -175,7 +215,7 @@
 						0,
 						13.35
 					],
-					"texture": "#2"
+					"texture": "#missing"
 				},
 				"up": {
 					"uv": [
@@ -184,7 +224,7 @@
 						0,
 						13.3
 					],
-					"texture": "#2"
+					"texture": "#missing"
 				},
 				"down": {
 					"uv": [
@@ -193,7 +233,7 @@
 						0,
 						13.3
 					],
-					"texture": "#2"
+					"texture": "#missing"
 				}
 			}
 		},
@@ -225,7 +265,7 @@
 						4.544,
 						9.9
 					],
-					"texture": "#2"
+					"texture": "#missing"
 				},
 				"east": {
 					"uv": [
@@ -234,7 +274,7 @@
 						4.544,
 						12.8
 					],
-					"texture": "#2"
+					"texture": "#missing"
 				},
 				"south": {
 					"uv": [
@@ -243,7 +283,7 @@
 						4.48,
 						9.9
 					],
-					"texture": "#2"
+					"texture": "#missing"
 				},
 				"west": {
 					"uv": [
@@ -252,7 +292,7 @@
 						0.016,
 						13.35
 					],
-					"texture": "#2"
+					"texture": "#missing"
 				},
 				"up": {
 					"uv": [
@@ -261,7 +301,7 @@
 						4.48,
 						8.6
 					],
-					"texture": "#2"
+					"texture": "#missing"
 				},
 				"down": {
 					"uv": [
@@ -270,7 +310,7 @@
 						4.48,
 						11.7
 					],
-					"texture": "#2"
+					"texture": "#missing"
 				}
 			}
 		},
@@ -302,7 +342,7 @@
 						0.016,
 						13.35
 					],
-					"texture": "#2"
+					"texture": "#missing"
 				},
 				"east": {
 					"uv": [
@@ -311,7 +351,7 @@
 						0,
 						13.3
 					],
-					"texture": "#2"
+					"texture": "#missing"
 				},
 				"south": {
 					"uv": [
@@ -320,7 +360,7 @@
 						0,
 						13.35
 					],
-					"texture": "#2"
+					"texture": "#missing"
 				},
 				"west": {
 					"uv": [
@@ -329,7 +369,7 @@
 						0.016,
 						13.35
 					],
-					"texture": "#2"
+					"texture": "#missing"
 				},
 				"up": {
 					"uv": [
@@ -338,7 +378,7 @@
 						0,
 						13.3
 					],
-					"texture": "#2"
+					"texture": "#missing"
 				},
 				"down": {
 					"uv": [
@@ -347,7 +387,7 @@
 						0,
 						13.3
 					],
-					"texture": "#2"
+					"texture": "#missing"
 				}
 			}
 		},
@@ -379,7 +419,7 @@
 						0.016,
 						13.35
 					],
-					"texture": "#2"
+					"texture": "#missing"
 				},
 				"east": {
 					"uv": [
@@ -388,7 +428,7 @@
 						0.016,
 						13.35
 					],
-					"texture": "#2"
+					"texture": "#missing"
 				},
 				"south": {
 					"uv": [
@@ -397,7 +437,7 @@
 						0.016,
 						13.35
 					],
-					"texture": "#2"
+					"texture": "#missing"
 				},
 				"west": {
 					"uv": [
@@ -406,7 +446,7 @@
 						0.016,
 						13.35
 					],
-					"texture": "#2"
+					"texture": "#missing"
 				},
 				"up": {
 					"uv": [
@@ -415,7 +455,7 @@
 						0.016,
 						13.35
 					],
-					"texture": "#2"
+					"texture": "#missing"
 				}
 			}
 		},
@@ -438,7 +478,7 @@
 						0.016,
 						13.35
 					],
-					"texture": "#2"
+					"texture": "#missing"
 				},
 				"east": {
 					"uv": [
@@ -447,7 +487,7 @@
 						0.048,
 						13.3
 					],
-					"texture": "#2"
+					"texture": "#missing"
 				},
 				"south": {
 					"uv": [
@@ -456,7 +496,7 @@
 						0.016,
 						13.35
 					],
-					"texture": "#2"
+					"texture": "#missing"
 				},
 				"west": {
 					"uv": [
@@ -465,7 +505,7 @@
 						0.016,
 						13.35
 					],
-					"texture": "#2"
+					"texture": "#missing"
 				},
 				"down": {
 					"uv": [
@@ -474,48 +514,7 @@
 						0.016,
 						13.35
 					],
-					"texture": "#2"
-				}
-			}
-		},
-		{
-			"from": [
-				8,
-				23.5,
-				14.5
-			],
-			"to": [
-				0,
-				21,
-				1.5
-			],
-			"rotation": {
-				"angle": 0,
-				"axis": "y",
-				"origin": [
-					-4,
-					1.5,
-					4
-				]
-			},
-			"faces": {
-				"north": {
-					"uv": [
-						0,
-						13.3,
-						0.016,
-						13.35
-					],
-					"texture": "#2"
-				},
-				"east": {
-					"uv": [
-						0,
-						13.3,
-						0.016,
-						13.35
-					],
-					"texture": "#2"
+					"texture": "#missing"
 				}
 			}
 		}
