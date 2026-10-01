@@ -1431,7 +1431,7 @@
   "fonts/mineimator-title/thumbnails/tiles.png": "62489b304ba5ffd7a87e7e8e87b740e9b3ac1ec453b357338e33bf8f4522d8ae",
   "fonts/mineimator-title/thumbnails/none.png": "7a53c809a42f29efdea3a7653f8f49ecfe76bcd8a4c7b2fda84363815b9d178e",
   "fonts/mineimator-block/thumbnails/flat.png": "67f403d72aea1c82499fc72604451ba681fec1a1cfd9014d619057e6bf2e4772",
-  "fonts/mineimator-block/thumbnails/live.png": "b8ca57dabe2fcac18a303aa130604b2feaf05bc40dd302d22a6cb4827365858a",
+  "fonts/mineimator-block/thumbnails/live.png": "6939627792efb992aefb92b6267a8828d9a36c8975e020b9d3b1a27971ce1b3b",
   "fonts/mineimator-block/thumbnails/mineimator.png": "67f403d72aea1c82499fc72604451ba681fec1a1cfd9014d619057e6bf2e4772",
   "fonts/mineimator-block/thumbnails/bedrock.png": "f120ce52b62bd491f87bc782c96b9da856ae8209feca3ce9c0b0f0e771b1c570",
   "fonts/mineimator-block/thumbnails/drop_shadow.png": "8dedb2ea99d60b3d5a1904014bb83cb874751e35a289bf1183e60e645ec334a8",
@@ -1447,7 +1447,7 @@
   "fonts/mineimator-block/overlays/highlights_bottom.png": "35e818e993d221caeb5982aeaf51925860d91beb597127872c64f918270b19ea",
   "fonts/mineimator-block/overlays/highlights_top.png": "0549dc842845088d65285a3fb9e62b2a36b87c4d00cd79405118632c404cccbc",
   "fonts/mineimator-block/textures/flat.png": "d7c4b0553d1c3a22864902ecb1a9a509b9971c0abfcdb42100364addeaa50d95",
-  "fonts/mineimator-block/textures/live.png": "0d2e57f6e9c57f2f5ebb26d4506d4beb7166016ec0fa98b33e5cfcde59104a48",
+  "fonts/mineimator-block/textures/live.png": "cd484e1f36a871d1ecb65ebc42a34ef3a8387ec7685cabe41222a9b929dd4a1d",
   "fonts/mineimator-block/textures/mineimator.png": "d7c4b0553d1c3a22864902ecb1a9a509b9971c0abfcdb42100364addeaa50d95",
   "fonts/mineimator-title/overlays/bevel.png": "319e03ced3eb32d4b08cb1832c5235fd68b25aaa85988ca2a5b3b201784cba08",
   "fonts/mineimator-title/overlays/bevel_highlight_bottom.png": "ae4d8052363cacc577bf8b89292a9aa8319b30d70732f224870b0ea041c515af",
@@ -1589,5 +1589,7 @@
   "fonts/mineimator-title/thumbnails/transmasculine.png": "7e99e17d337a4bb7de96fc7c907082e8e129ffca949da10939acd665758c7eba",
   "fonts/mineimator-title/thumbnails/warped_nylium.png": "d7276b18b534541614dcbd3da31e3a973fca33a2c732bef6f8de4b68549b7360",
   "fonts/mineimator-title/thumbnails/warped_planks.png": "393458f41d268b65adc37e6a8c9f1a5aecb100e69a0630b9da9ea0d50ebf21e7",
-  "fonts/mineimator-title/thumbnails/winter.png": "9c0cb1685649120528da52f1e5aceec64d33d1e70f9882a63771b7bec43f8fd9"
+  "fonts/mineimator-title/thumbnails/winter.png": "9c0cb1685649120528da52f1e5aceec64d33d1e70f9882a63771b7bec43f8fd9",
+  "fonts/mineimator-block/thumbnails/live_flat.png": "b8ca57dabe2fcac18a303aa130604b2feaf05bc40dd302d22a6cb4827365858a",
+  "fonts/mineimator-block/textures/live_flat.png": "0d2e57f6e9c57f2f5ebb26d4506d4beb7166016ec0fa98b33e5cfcde59104a48"
 }
