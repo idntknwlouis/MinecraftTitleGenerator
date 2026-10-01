@@ -78,7 +78,9 @@ for (const font of fonts) {
 
   if (font.type === "font") {
     for (const file of fs.readdirSync(`../fonts/${font.id}/characters`)) {
-      const char = charMap[file.slice(0, -5)] ?? file.slice(0, -5)
+      const stem = file.slice(0, -5)
+      const unicodeMatch = stem.match(/^#U([0-9A-Fa-f]{4,6})$/)
+      const char = charMap[stem] ?? (unicodeMatch ? String.fromCodePoint(parseInt(unicodeMatch[1], 16)) : stem)
       font.characters[char] = JSON.parse(fs.readFileSync(`../fonts/${font.id}/characters/${file}`, "utf8")).elements
     }
   } else if (font.type === "shape") {
@@ -401,6 +403,11 @@ function addTitleText(scene, str, args) {
       width -= font.shifts[lastCharacter + char]
     }
     const model = font.characters[char]
+    if (!Array.isArray(model)) {
+      console.warn(`Skipping missing preview character ${JSON.stringify(char)} in ${font.id}`)
+      lastCharacter = char
+      continue
+    }
     width += addModel(scene, model, group, material, cubes, i, font, width, args)
     lastCharacter = char
   }
