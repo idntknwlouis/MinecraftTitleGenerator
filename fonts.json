@@ -103,11 +103,7 @@
       ]
     ],
     "terminatorSpace": true,
-    "preview": "H/O",
-    "example": [
-      "OH",
-      "oh"
-    ],
+    "preview": "\uE001\uE000!",
     "shifts": {
       "//": 16,
       "\\\\": 16,
