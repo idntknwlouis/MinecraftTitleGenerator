@@ -6,7 +6,7 @@
 		320
 	],
 	"textures": {
-		"particle": "mine-imator-family:mineimator"
+		"particle": "minecraft-ten:mineimator"
 	},
 	"elements": [
 		{
@@ -115,9 +115,9 @@
 				"angle": -5,
 				"axis": "z",
 				"origin": [
-					2.5,
-					39,
-					7.5
+					0,
+					0.5,
+					-0.5
 				]
 			},
 			"faces": {
@@ -183,9 +183,9 @@
 				"angle": -5,
 				"axis": "z",
 				"origin": [
-					2.5,
-					39,
-					0
+					1,
+					-0.5,
+					-0.5
 				]
 			},
 			"faces": {
@@ -251,9 +251,9 @@
 				"angle": -15,
 				"axis": "z",
 				"origin": [
-					-4,
-					41.5,
-					7.5
+					0.5,
+					0,
+					0.5
 				]
 			},
 			"faces": {
@@ -328,9 +328,9 @@
 				"angle": -15,
 				"axis": "z",
 				"origin": [
-					-4,
-					41.5,
-					7.5
+					0.32266,
+					-0.40309,
+					0.5
 				]
 			},
 			"faces": {
