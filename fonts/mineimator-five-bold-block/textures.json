@@ -1,8 +1,14 @@
 {
   "textures": {
+    "flat": {
+      "author": "Ewan Howell"
+    },
+    "live": {
+      "author": "Ewan Howell"
+    },
     "mineimator": {
       "name": "Mine-imator",
-      "author": "Louis"
+      "author": "idntknwlouis"
     }
   },
   "overlays": {}
