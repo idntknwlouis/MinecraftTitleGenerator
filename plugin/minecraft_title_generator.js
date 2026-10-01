@@ -3933,6 +3933,7 @@
     let minZ = Infinity
     let maxZ = -Infinity
     const cubes = []
+    const rotationOrigins = new Map()
     for (const element of fonts[args.font].characters[char]) {
       if (!element.parsed) {
         element.parsed = true
@@ -3940,14 +3941,26 @@
           element.faces[direction] = { uv }
         }
       }
-      const cube = new Cube(element)
-      let rotationOrigin = null
-      if (element.rotation && !Array.isArray(element.rotation) && typeof element.rotation === "object") {
-        const axisIndex = { x: 0, y: 1, z: 2 }[element.rotation.axis]
-        if (axisIndex !== undefined) {
-          cube.rotation[axisIndex] = element.rotation.angle ?? 0
-          rotationOrigin = [...(element.rotation.origin ?? [0, 0, 0])]
-        }
+      // Java block-model rotations use an object ({ angle, axis, origin }),
+      // while Blockbench's Cube constructor expects rotation as [x, y, z].
+      // Passing the Java object straight into new Cube(...) can leave the pivot
+      // in an inconsistent state, which makes rotated details orbit away from
+      // their intended position when generated.
+      const javaRotation = element.rotation && !Array.isArray(element.rotation) && typeof element.rotation === "object"
+        ? element.rotation
+        : null
+      const cubeOptions = { ...element }
+      if (javaRotation) {
+        const axisIndex = { x: 0, y: 1, z: 2 }[javaRotation.axis]
+        const rotation = [0, 0, 0]
+        if (axisIndex !== undefined) rotation[axisIndex] = javaRotation.angle ?? 0
+        cubeOptions.rotation = rotation
+        cubeOptions.origin = [...(javaRotation.origin ?? [0, 0, 0])]
+      }
+      const cube = new Cube(cubeOptions)
+      if (javaRotation) {
+        cube.rotation_axis = javaRotation.axis
+        rotationOrigins.set(cube, [...cubeOptions.origin])
       }
       if (char === "​") {
         if (cube.to[0] > cube.from[0]) {
@@ -3993,6 +4006,8 @@
     }
     const heightOffset = fonts[args.font].height
     for (const cube of cubes) {
+      let rotationOrigin = rotationOrigins.get(cube)
+
       cube.to[0] -= offset + maxX
       cube.from[0] -= offset + maxX
       cube.to[2] -= minZ
@@ -4001,6 +4016,7 @@
         rotationOrigin[0] -= offset + maxX
         rotationOrigin[2] -= minZ
       }
+
       if (args.type === "bottom") {
         cube.to[1] *= 2
         cube.from[1] *= 2
@@ -4008,12 +4024,15 @@
         cube.to[1] -= bottomYOffset
         cube.from[1] -= bottomYOffset
         if (rotationOrigin) rotationOrigin[1] = rotationOrigin[1] * 2 - bottomYOffset
+
         cube.to = cube.to.map(e => e * 0.75)
         cube.from = cube.from.map(e => e * 0.75)
         if (rotationOrigin) rotationOrigin = rotationOrigin.map(e => e * 0.75)
+
         cube.to[2] -= 8
         cube.from[2] -= 8
         if (rotationOrigin) rotationOrigin[2] -= 8
+
         if (!fonts[args.font].flat) {
           if (cube.to[2] > cube.from[2]) {
             cube.to[2] += 24
@@ -4024,20 +4043,20 @@
       } else if (args.type === "small") {
         cube.to[2] -= (maxZ - minZ)
         cube.from[2] -= (maxZ - minZ)
+        if (rotationOrigin) rotationOrigin[2] -= (maxZ - minZ)
+
         cube.to[0] *= 0.35
         cube.from[0] *= 0.35
         cube.to[1] *= 0.35
         cube.from[1] *= 0.35
         cube.to[2] *= 0.35
         cube.from[2] *= 0.35
+        if (rotationOrigin) rotationOrigin = rotationOrigin.map(e => e * 0.35)
+
         const smallYOffset = args.row * (heightOffset * 0.35) + args.rowSpacing * args.row + heightOffset * 0.35
         cube.to[1] -= smallYOffset
         cube.from[1] -= smallYOffset
-        if (rotationOrigin) {
-          rotationOrigin[0] *= 0.35
-          rotationOrigin[1] = rotationOrigin[1] * 0.35 - smallYOffset
-          rotationOrigin[2] *= 0.35
-        }
+        if (rotationOrigin) rotationOrigin[1] -= smallYOffset
       } else {
         const normalZOffset = (maxZ - minZ) / 2
         const normalYOffset = args.row * (heightOffset + 4) + args.rowSpacing * args.row
@@ -4050,12 +4069,11 @@
           rotationOrigin[1] += normalYOffset
         }
       }
+
       cube.to = cube.to.map((e, i) => e * args.scale[i])
       cube.from = cube.from.map((e, i) => e * args.scale[i])
-      if (rotationOrigin) {
-        rotationOrigin = rotationOrigin.map((e, i) => e * args.scale[i])
-        cube.origin = rotationOrigin
-      }
+      if (rotationOrigin) cube.origin = rotationOrigin.map((e, i) => e * args.scale[i])
+
       cube.addTo(character).init()
       args.elements.push(cube)
     }
