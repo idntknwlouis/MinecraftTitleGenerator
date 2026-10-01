@@ -313,7 +313,7 @@
     "overlay": false,
     "name": "Mine-imator Block",
     "description": "Mine-imator-style bold subtitle block with tighter model-based glyph widths and unchanged terminators.",
-    "borderSize": 3
+    "borderSize": 3.5
   },
   {
     "id": "minecraft-ten-outline",

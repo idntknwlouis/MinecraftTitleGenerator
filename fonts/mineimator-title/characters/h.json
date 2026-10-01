@@ -5,8 +5,8 @@
 		320
 	],
 	"textures": {
-		"2": "mineimator-family:mineimator",
-		"particle": "mineimator-family:mineimator"
+		"2": "mineimator-title:mineimator",
+		"particle": "mineimator-title:mineimator"
 	},
 	"elements": [
 		{
