@@ -2,8 +2,8 @@
 	"credit": "By Ewan Howell",
 	"texture_size": [1000, 320],
 	"textures": {
-		"2": "mine-imator-family:flat",
-		"particle": "mine-imator-family:flat"
+		"2": "mineimator-family:flat",
+		"particle": "mineimator-family:flat"
 	},
 	"elements": [
 		{

@@ -1,0 +1,84 @@
+{
+  "textures": {
+    "mineimator": {
+      "name": "Mine-Imator Family",
+      "author": "ModelBench & ShrimpSnail"
+    }
+  },
+  "overlays": {
+    "highlights_bottom": {
+      "name": "Highlights (Bottom)",
+      "author": "Ewan Howell"
+    },
+    "highlights_top": {
+      "name": "Highlights (Top)",
+      "author": "Ewan Howell"
+    },
+    "bevel": {
+      "author": "Ewan Howell"
+    },
+    "cracks": {
+      "author": "Ewan Howell"
+    },
+    "shine": {
+      "author": "Ewan Howell"
+    },
+    "shine_random": {
+      "author": "Ewan Howell",
+      "name": "Shine (Random)"
+    },
+    "outline": {
+      "author": "Ewan Howell"
+    },
+    "inset_outline": {
+      "author": "Ewan Howell"
+    },
+    "edge_fade": {
+      "author": "Ewan Howell"
+    },
+    "tiles": {
+      "author": "0Szysza"
+    },
+    "bevel_highlight_bottom": {
+      "name": "Bevel Highlight (Bottom)",
+      "author": "FloideN"
+    },
+    "bevel_highlight_top": {
+      "name": "Bevel Highlight (Top)",
+      "author": "FloideN"
+    },
+    "texture_highlight_1": {
+      "name": "Texture Highlight",
+      "author": "FloideN"
+    },
+    "texture_highlight_2": {
+      "name": "Texture Highlight (Offset)",
+      "author": "FloideN"
+    },
+    "cartoon": {
+      "author": "Gyak"
+    },
+    "outline_fade": {
+      "author": "blank3times"
+    },
+    "glass": {
+      "author": "BitseK"
+    },
+    "glass_old": {
+      "name": "Glass (Old)",
+      "author": "BitseK"
+    },
+    "highlights_right": {
+      "name": "Highlights (Right)",
+      "author": "BitseK"
+    },
+    "highlights_left": {
+      "name": "Highlights (Left)",
+      "author": "BitseK"
+    },
+    "glass_tempered": {
+      "name": "Glass (Tempered)",
+      "author": "BitseK"
+    }
+  }
+}
