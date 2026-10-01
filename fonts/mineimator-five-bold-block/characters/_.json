@@ -1,19 +1,62 @@
 {
-	"credit": "By Ewan Howell",
-	"texture_size": [1000, 320],
-	"textures": {
-		"0": "mineimator-five-bold-block:mineimator"
-	},
-	"elements": [
-		{
-			"from": [-10, 2, 0],
-			"to": [26, 50, 16],
-			"faces": {
-				"north": {"uv": [0.448, 9, 1.024, 11.4], "texture": "#0"},
-				"south": {"uv": [1.024, 9, 0.448, 11.4], "texture": "#0"},
-				"up": {"uv": [1.024, 9, 0.448, 8.2], "texture": "#0"},
-				"down": {"uv": [1.024, 12.2, 0.448, 11.4], "texture": "#0"}
-			}
-		}
-	]
+  "credit": "By Ewan Howell",
+  "texture_size": [
+    1000,
+    320
+  ],
+  "textures": {
+    "0": "mineimator-five-bold-block:mineimator"
+  },
+  "elements": [
+    {
+      "from": [
+        -8,
+        2,
+        0
+      ],
+      "to": [
+        24,
+        50,
+        16
+      ],
+      "faces": {
+        "north": {
+          "uv": [
+            0.48,
+            9,
+            0.992,
+            11.4
+          ],
+          "texture": "#0"
+        },
+        "south": {
+          "uv": [
+            0.992,
+            9,
+            0.48,
+            11.4
+          ],
+          "texture": "#0"
+        },
+        "up": {
+          "uv": [
+            0.992,
+            9,
+            0.48,
+            8.2
+          ],
+          "texture": "#0"
+        },
+        "down": {
+          "uv": [
+            0.992,
+            12.2,
+            0.48,
+            11.4
+          ],
+          "texture": "#0"
+        }
+      }
+    }
+  ]
 }
