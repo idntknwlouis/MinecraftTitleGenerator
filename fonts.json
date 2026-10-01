@@ -270,6 +270,52 @@
     "overlay": true
   },
   {
+    "id": "mineimator-five-bold-block",
+    "author": "Louis",
+    "height": 52,
+    "border": 246,
+    "faces": [
+      [
+        16,
+        64
+      ],
+      [
+        98,
+        146
+      ],
+      [
+        180,
+        228
+      ]
+    ],
+    "ends": [
+      [
+        0,
+        16,
+        64,
+        80
+      ],
+      [
+        82,
+        98,
+        146,
+        162
+      ],
+      [
+        164,
+        180,
+        228,
+        244
+      ]
+    ],
+    "autoBorder": true,
+    "forcedTerminators": true,
+    "overlay": false,
+    "name": "Mine-imator Five Bold Block",
+    "description": "Mine-imator-style bold subtitle block with smaller lettering and a heavier outer border.",
+    "borderSize": 3.5
+  },
+  {
     "id": "minecraft-ten-outline",
     "author": "Ewan Howell",
     "height": 60,

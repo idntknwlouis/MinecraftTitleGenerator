@@ -108,9 +108,18 @@ for (const font of fonts) {
   fs.mkdirSync(`../${font.type}s/${font.id}/thumbnails`, { recursive: true })
   fs.mkdirSync(`temp/${font.type}s/${font.id}/thumbnails`, { recursive: true })
 
-  const textures = fs.readdirSync(`../${font.type}s/${font.id}/textures`).map(e => ["textures", e]).concat(fs.readdirSync(`../${font.type}s/${font.id}/overlays`).map(e => ["overlays", e]))
+  const textureDir = `../${font.type}s/${font.id}/textures`
+  const overlayDir = `../${font.type}s/${font.id}/overlays`
+  const textureFiles = fs.existsSync(textureDir) ? fs.readdirSync(textureDir) : []
+  const overlayFiles = fs.existsSync(overlayDir) ? fs.readdirSync(overlayDir) : []
+  const textures = textureFiles.map(e => ["textures", e]).concat(overlayFiles.map(e => ["overlays", e]))
 
-  const flat = await loadImage(`../${font.type}s/${font.id}/textures/flat.png`)
+  const flatPath = `${textureDir}/flat.png`
+  const fallbackTexture = textureFiles.find(e => e.endsWith(".png"))
+  if (!fs.existsSync(flatPath) && !fallbackTexture) {
+    throw new Error(`No PNG texture found for ${font.id}`)
+  }
+  const flat = await loadImage(fs.existsSync(flatPath) ? flatPath : `${textureDir}/${fallbackTexture}`)
   const overlayBackground = new Canvas(flat.width, flat.height)
   const overlayBackgroundCtx = overlayBackground.getContext("2d")
   overlayBackgroundCtx.drawImage(flat, 0, 0)
