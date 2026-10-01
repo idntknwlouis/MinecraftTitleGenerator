@@ -314,7 +314,7 @@
     "name": "Mine-imator Five Bold Block",
     "description": "Mine-imator-style bold subtitle block with smaller lettering and a heavier outer border.",
     "borderSize": 3.5,
-    "defaultCharacterSpacing": -2
+    "defaultCharacterSpacing": -4
   },
   {
     "id": "minecraft-ten-outline",
