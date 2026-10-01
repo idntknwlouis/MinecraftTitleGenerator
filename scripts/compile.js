@@ -168,9 +168,10 @@ for (const font of fonts) {
         const ctx = texture.image.getContext("2d")
         colour = ctx.getImageData(0, font.border * scaleFactor, 1, 1).data
       }
-      const bordered = new Canvas(canvas.width + 4 * scaleFactor, canvas.height + 4 * scaleFactor)
+      const borderPad = (font.borderSize ?? 2) * scaleFactor
+      const bordered = new Canvas(canvas.width + borderPad * 2, canvas.height + borderPad * 2)
       const ctx = bordered.getContext("2d")
-      ctx.drawImage(canvas, 2 * scaleFactor, 2 * scaleFactor)
+      ctx.drawImage(canvas, borderPad, borderPad)
       const { data } = ctx.getImageData(0, 0, bordered.width, bordered.height)
       const opacity = file[0] === "textures" ? 255 : 77
       for (let i = data.length - 4; i >= 0; i -= 4) {

@@ -1,0 +1,1 @@
+{"credit":"By Ewan Howell","texture_size":[1000,320],"textures":{"0":"mineimator-five-bold-block:mineimator"},"elements":[{"from":[-8,2,0],"to":[24,50,32],"faces":{"north":{"uv":[4.096,4.9,4.608,7.3],"texture":"#0"},"south":{"uv":[4.608,4.9,4.096,7.3],"texture":"#0"},"up":{"uv":[4.608,4.9,4.096,4.1],"texture":"#0"},"down":{"uv":[4.608,8.1,4.096,7.3],"texture":"#0"}}}]}
