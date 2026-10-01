@@ -365,8 +365,24 @@ function addModel(scene, model, group, material, cubes, i, font, width, args) {
         geometry.index.array[offset + 5] = 0
       }
     }
-    character.add(mesh)
-    cubes.push(mesh)
+    if (cube.rotation && !Array.isArray(cube.rotation) && typeof cube.rotation === "object" && cube.rotation.angle) {
+      const pivot = new THREE.Group()
+      const origin = cube.rotation.origin ?? [0, 0, 0]
+      pivot.position.fromArray(origin)
+      mesh.position.x -= origin[0]
+      mesh.position.y -= origin[1]
+      mesh.position.z -= origin[2]
+      const radians = THREE.MathUtils.degToRad(cube.rotation.angle)
+      if (cube.rotation.axis === "x") pivot.rotation.x = radians
+      if (cube.rotation.axis === "y") pivot.rotation.y = radians
+      if (cube.rotation.axis === "z") pivot.rotation.z = radians
+      pivot.add(mesh)
+      character.add(pivot)
+      cubes.push(pivot)
+    } else {
+      character.add(mesh)
+      cubes.push(mesh)
+    }
   }
   if (i) max += font.characterSpacing ?? 0
   for (const cube of character.children) {

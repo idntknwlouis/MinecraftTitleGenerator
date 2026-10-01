@@ -3941,6 +3941,14 @@
         }
       }
       const cube = new Cube(element)
+      let rotationOrigin = null
+      if (element.rotation && !Array.isArray(element.rotation) && typeof element.rotation === "object") {
+        const axisIndex = { x: 0, y: 1, z: 2 }[element.rotation.axis]
+        if (axisIndex !== undefined) {
+          cube.rotation[axisIndex] = element.rotation.angle ?? 0
+          rotationOrigin = [...(element.rotation.origin ?? [0, 0, 0])]
+        }
+      }
       if (char === "​") {
         if (cube.to[0] > cube.from[0]) {
           cube.to[0] += args.spacerWidth
@@ -3989,15 +3997,23 @@
       cube.from[0] -= offset + maxX
       cube.to[2] -= minZ
       cube.from[2] -= minZ
+      if (rotationOrigin) {
+        rotationOrigin[0] -= offset + maxX
+        rotationOrigin[2] -= minZ
+      }
       if (args.type === "bottom") {
         cube.to[1] *= 2
         cube.from[1] *= 2
-        cube.to[1] -= args.row * (heightOffset * 2 + 4) + args.rowSpacing * args.row + heightOffset * 2 + 18
-        cube.from[1] -= args.row * (heightOffset * 2 + 4) + args.rowSpacing * args.row + heightOffset * 2 + 18
+        const bottomYOffset = args.row * (heightOffset * 2 + 4) + args.rowSpacing * args.row + heightOffset * 2 + 18
+        cube.to[1] -= bottomYOffset
+        cube.from[1] -= bottomYOffset
+        if (rotationOrigin) rotationOrigin[1] = rotationOrigin[1] * 2 - bottomYOffset
         cube.to = cube.to.map(e => e * 0.75)
         cube.from = cube.from.map(e => e * 0.75)
+        if (rotationOrigin) rotationOrigin = rotationOrigin.map(e => e * 0.75)
         cube.to[2] -= 8
         cube.from[2] -= 8
+        if (rotationOrigin) rotationOrigin[2] -= 8
         if (!fonts[args.font].flat) {
           if (cube.to[2] > cube.from[2]) {
             cube.to[2] += 24
@@ -4014,16 +4030,32 @@
         cube.from[1] *= 0.35
         cube.to[2] *= 0.35
         cube.from[2] *= 0.35
-        cube.to[1] -= args.row * (heightOffset * 0.35) + args.rowSpacing * args.row + heightOffset * 0.35
-        cube.from[1] -= args.row * (heightOffset * 0.35) + args.rowSpacing * args.row + heightOffset * 0.35
+        const smallYOffset = args.row * (heightOffset * 0.35) + args.rowSpacing * args.row + heightOffset * 0.35
+        cube.to[1] -= smallYOffset
+        cube.from[1] -= smallYOffset
+        if (rotationOrigin) {
+          rotationOrigin[0] *= 0.35
+          rotationOrigin[1] = rotationOrigin[1] * 0.35 - smallYOffset
+          rotationOrigin[2] *= 0.35
+        }
       } else {
-        cube.to[2] -= (maxZ - minZ) / 2
-        cube.from[2] -= (maxZ - minZ) / 2
-        cube.to[1] += args.row * (heightOffset + 4) + args.rowSpacing * args.row
-        cube.from[1] += args.row * (heightOffset + 4) + args.rowSpacing * args.row
+        const normalZOffset = (maxZ - minZ) / 2
+        const normalYOffset = args.row * (heightOffset + 4) + args.rowSpacing * args.row
+        cube.to[2] -= normalZOffset
+        cube.from[2] -= normalZOffset
+        cube.to[1] += normalYOffset
+        cube.from[1] += normalYOffset
+        if (rotationOrigin) {
+          rotationOrigin[2] -= normalZOffset
+          rotationOrigin[1] += normalYOffset
+        }
       }
       cube.to = cube.to.map((e, i) => e * args.scale[i])
       cube.from = cube.from.map((e, i) => e * args.scale[i])
+      if (rotationOrigin) {
+        rotationOrigin = rotationOrigin.map((e, i) => e * args.scale[i])
+        cube.origin = rotationOrigin
+      }
       cube.addTo(character).init()
       args.elements.push(cube)
     }
