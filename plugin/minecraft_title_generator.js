@@ -1,5 +1,5 @@
 (async () => {
-  const repo = "idntknwlouis/MinecraftTitleGenerator"
+  const repo = "idntknwloui/MinecraftTitleGenerator"
   const branch = "main"
   const thumbnail = "data:image/webp;base64,UklGRlgAAABXRUJQVlA4TEsAAAAvX8AKEBcw//M///MfgAe2jSQp2iSPOr+nSXPHOng7ov8TUKa/ZLlkuWT5VVyOy1FKKXNFRBwtJ0mU3YktcTmu31JKKVPklPlPZXoA"
   const shapeThumbnail = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAsAQMAAAA+dijMAAAABlBMVEUAAAD///+l2Z/dAAAAE0lEQVQIW2NggAP7////DAcCDgA7eYDpLi6r7QAAAABJRU5ErkJggg=="
