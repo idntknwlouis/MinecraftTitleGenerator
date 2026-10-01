@@ -63,7 +63,7 @@
     "id": "mineimator-title",
     "name": "Mine-imator Title",
     "description": "A Minecraft Ten-based font family for Mine-imator-style character shapes. Custom glyphs can be added over time while the remaining characters use Minecraft Ten as a starting point.",
-    "author": "Louis",
+    "author": "idntknwouis",
     "height": 44,
     "border": 266,
     "faces": [
@@ -103,10 +103,10 @@
       ]
     ],
     "terminatorSpace": true,
-    "preview": "hio",
+    "preview": "H/O",
     "example": [
-      "mine-imator",
-      "family"
+      "OH",
+      "oh"
     ],
     "shifts": {
       "//": 16,
