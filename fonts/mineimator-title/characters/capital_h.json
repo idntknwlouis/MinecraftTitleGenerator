@@ -78,7 +78,6 @@
 		{
 			"from": [24, 34, 21],
 			"to": [-8, 0, -5],
-			"rotation": {"angle": 0, "axis": "y", "origin": [0, -10, 0]},
 			"faces": {
 				"north": {"uv": [0, 13.3, 0.016, 13.35], "texture": "#particle"},
 				"east": {"uv": [0, 13.3, 0.016, 13.35], "texture": "#particle"},

@@ -1,5 +1,5 @@
 (async () => {
-  const repo = "idntknwloui/MinecraftTitleGenerator"
+  const repo = "idntknwlouis/MinecraftTitleGenerator"
   const branch = "main"
   const thumbnail = "data:image/webp;base64,UklGRlgAAABXRUJQVlA4TEsAAAAvX8AKEBcw//M///MfgAe2jSQp2iSPOr+nSXPHOng7ov8TUKa/ZLlkuWT5VVyOy1FKKXNFRBwtJ0mU3YktcTmu31JKKVPklPlPZXoA"
   const shapeThumbnail = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAsAQMAAAA+dijMAAAABlBMVEUAAAD///+l2Z/dAAAAE0lEQVQIW2NggAP7////DAcCDgA7eYDpLi6r7QAAAABJRU5ErkJggg=="
@@ -3933,7 +3933,7 @@
     let minZ = Infinity
     let maxZ = -Infinity
     const cubes = []
-    const rotationOrigins = new Map()
+    const rotationData = new Map()
     for (const element of fonts[args.font].characters[char]) {
       if (!element.parsed) {
         element.parsed = true
@@ -3941,26 +3941,20 @@
           element.faces[direction] = { uv }
         }
       }
-      // Java block-model rotations use an object ({ angle, axis, origin }),
-      // while Blockbench's Cube constructor expects rotation as [x, y, z].
-      // Passing the Java object straight into new Cube(...) can leave the pivot
-      // in an inconsistent state, which makes rotated details orbit away from
-      // their intended position when generated.
-      const javaRotation = element.rotation && !Array.isArray(element.rotation) && typeof element.rotation === "object"
-        ? element.rotation
-        : null
-      const cubeOptions = { ...element }
-      if (javaRotation) {
-        const axisIndex = { x: 0, y: 1, z: 2 }[javaRotation.axis]
-        const rotation = [0, 0, 0]
-        if (axisIndex !== undefined) rotation[axisIndex] = javaRotation.angle ?? 0
-        cubeOptions.rotation = rotation
-        cubeOptions.origin = [...(javaRotation.origin ?? [0, 0, 0])]
-      }
-      const cube = new Cube(cubeOptions)
-      if (javaRotation) {
-        cube.rotation_axis = javaRotation.axis
-        rotationOrigins.set(cube, [...cubeOptions.origin])
+      // Do not pass Java-model rotation metadata directly into Cube().
+      // Blockbench interprets that object on construction and can apply the
+      // origin a second time. Build the cube from geometry/faces only, then
+      // restore the angle ourselves below.
+      const cubeData = { ...element }
+      delete cubeData.rotation
+      const cube = new Cube(cubeData)
+      cube.origin = [0, 0, 0]
+      if (element.rotation && !Array.isArray(element.rotation) && typeof element.rotation === "object") {
+        const axisIndex = { x: 0, y: 1, z: 2 }[element.rotation.axis]
+        if (axisIndex !== undefined) {
+          cube.rotation[axisIndex] = element.rotation.angle ?? 0
+          rotationData.set(cube, { origin: [...(element.rotation.origin ?? [0, 0, 0])], axis: element.rotation.axis, angle: element.rotation.angle ?? 0 })
+        }
       }
       if (char === "​") {
         if (cube.to[0] > cube.from[0]) {
@@ -4006,7 +4000,8 @@
     }
     const heightOffset = fonts[args.font].height
     for (const cube of cubes) {
-      let rotationOrigin = rotationOrigins.get(cube)
+      const cubeRotationData = rotationData.get(cube)
+      let rotationOrigin = cubeRotationData?.origin ? [...cubeRotationData.origin] : null
 
       cube.to[0] -= offset + maxX
       cube.from[0] -= offset + maxX
@@ -4072,9 +4067,46 @@
 
       cube.to = cube.to.map((e, i) => e * args.scale[i])
       cube.from = cube.from.map((e, i) => e * args.scale[i])
-      if (rotationOrigin) cube.origin = rotationOrigin.map((e, i) => e * args.scale[i])
+      if (rotationOrigin) {
+        rotationOrigin = rotationOrigin.map((e, i) => e * args.scale[i])
+
+        // Bake the element's pivot into its position so generated cubes can keep
+        // a clean [0, 0, 0] origin without orbiting away from the H.
+        // For an equivalent rotation around the world origin:
+        //   shift = R^-1(pivot) - pivot
+        // where R is the cube's stored rotation.
+        const angle = cubeRotationData?.angle ?? 0
+        const axis = cubeRotationData?.axis
+        if (angle && axis) {
+          const r = -angle * Math.PI / 180
+          const c = Math.cos(r)
+          const sn = Math.sin(r)
+          const [x, y, z] = rotationOrigin
+          let rx = x, ry = y, rz = z
+          if (axis === "x") {
+            ry = y * c - z * sn
+            rz = y * sn + z * c
+          } else if (axis === "y") {
+            rx = x * c + z * sn
+            rz = -x * sn + z * c
+          } else if (axis === "z") {
+            rx = x * c - y * sn
+            ry = x * sn + y * c
+          }
+          const shift = [rx - x, ry - y, rz - z]
+          cube.from = cube.from.map((e, i) => e + shift[i])
+          cube.to = cube.to.map((e, i) => e + shift[i])
+        }
+        cube.origin = [0, 0, 0]
+      }
 
       cube.addTo(character).init()
+      // init() can normalize transform fields depending on the active format;
+      // keep the baked-pivot contract explicit for generated title cubes.
+      if (rotationOrigin) {
+        cube.origin = [0, 0, 0]
+        cube.preview_controller?.updateTransform?.(cube)
+      }
       args.elements.push(cube)
     }
     args.lastCharacter = char
