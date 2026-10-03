@@ -1,11 +1,19 @@
 {
   "textures": {
     "flat": {
-      "author": "Ewan Howell"
+      "author": "Ewan Howell & idntknwlouis"
     },
     "mineimator": {
-      "name": "Mine-Imator Family",
+      "name": "Mine-imator Color",
+      "author": "ModelBench, ShrimpSnail & idntknwlouis"
+    },
+    "modelbench": {
+      "name": "Modelbench Color",
       "author": "ModelBench & ShrimpSnail"
+    },
+    "hueshift": {
+      "name": "Hue shifting friendly",
+      "author": "ModelBench, ShrimpSnail & idntknwlouis"
     }
   },
   "overlays": {}
